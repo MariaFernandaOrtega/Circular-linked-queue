@@ -3,41 +3,57 @@
 Created on Tue Mar 14 15:42:53 2023
 
 
-@author: Hannah
+@author: MariaFernandaOrtega
 """
-
-class Empty(Exception):
-  pass
 
 
 class CircularQueue:
-    """Queue implementation using circularly linked list for storage"""""
-    
-    class _Node:
-        __slots__ = '_element', '_next'
-        
-        def __init__(self, element, nxt):
-            self._element = element
-            self._next = nxt
+    class Node:
+        def __init__(self, element):
+            self.element = element
+            self.next = None
 
     def __init__(self):
-        self._tail = None
-        self._size = 0
-
-    def __len__(self):
-        return self._size
+        self.head = None
+        self.tail = None
+        self.size = 0
 
     def is_empty(self):
-        return self._size == 0
+        return self.size == 0
+
+    def __len__(self):
+        return self.size
 
     def first(self):
-       pass
+        if self.is_empty():
+            raise Exception("Queue is empty.")
+        return self.head.element
 
     def dequeue(self):
-        pass
-    
-    def enqueue(self, e):
-        pass
-    
+        if self.is_empty():
+            raise Exception("Queue is empty.")
+        element = self.head.element
+        self.size -= 1
+        if self.size == 0:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.tail.next = self.head
+        return element
+
+    def enqueue(self, element):
+        new_node = self.Node(element)
+        if self.is_empty():
+            self.head = new_node
+        else:
+            self.tail.next = new_node
+        self.tail = new_node
+        self.tail.next = self.head
+        self.size += 1
+
     def rotate(self):
-       pass
+        if self.is_empty():
+            raise Exception("Queue is empty.")
+        self.tail = self.head
+        self.head = self.head.next

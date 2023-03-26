@@ -2,7 +2,7 @@
 """
 Created on Tue Mar 14 15:48:01 2023
 
-@author: Hannah
+@author: Maria Fernanda Ortega
 """
 
 from cq import CircularQueue
