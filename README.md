@@ -1,8 +1,7 @@
 # CircularLinkedList
 
-Implement a queue as a Circular Linked List. Your CircularQueue should use an inner class ```Node```.
-Your queue should keep track of its size.
-Your queue should implement the following methods:
+This repository contains a Circular Linked List. 
+The queue implements the following methods:
 
 ```first(self)```
 returns the element that is currently at the head of the queue. Raises an exception if the queue is empty.
